@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="aaa">
+    <button id="btn">클릭</button>
+    <button id="fetchData">Fetch Data   </button>
+    <div id="dataDisplay"></div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+             $('#btn').click(function(){
+                const vv = $('#aaa').val();
+                alert(vv);
+             });
+             $('#fetchData').click(function(){
+                $.getJSON("http://localhost:4000/posts",function(data){  // 해당 URL에 JSON 데이터를 요청하여 function(data)의 매개변수 data에 넣어준다.
+                    $('#dataDisplay').html(JSON.stringify(data)); // data를 String 으로 만들어서 html 형식으로 넣어준다.
+                }).fail(function(){
+                    alert('Error fetching data.');
+                })
+             });
+
+        });
+    </script>
+</body>
+</html>
