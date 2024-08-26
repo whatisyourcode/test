@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+        <input type="text" id="aaa"/>
+        <button id="btn">클릭</button>
+        <div id="bbb"></div>
+    <script>
+        const button = document.querySelector("#btn");
+        button.addEventListener('click', ()=>{
+         //  input 태그의 text 가져와서 vv 변수에 대입
+            const vv = document.querySelector('#aaa');
+         // div 태그 가져온 후 div에 대입
+            const div = document.getElementById("bbb");
+         // div태그를 생성후 div2에 대입
+            const div2 = document.createElement('div');
+         // p 태그와 버튼 태그를 생성 후 button 태그에는 '삽입' 데이터 삽입, p태그에는 사용자가 작성한 데이터  삽입
+            const p = document.createElement('p');
+            const button = document.createElement('button');
+            button.textContent = '삭제';
+            button.addEventListener('click',()=>{
+                div.removeChild(div2);
+            });
+
+            p.textContent = vv.value;
+         // input 태그를 공백으로 만들기
+            vv.value = "";
+         // div2태그에 p태그,button태그를 자식태그로 붙이고 div 태그에 div2 태그를 자식태그로 붙이기
+            div2.appendChild(p);
+            div2.appendChild(button);
+            div.appendChild(div2);
+        });
+    </script>
+</body>
+</html>
